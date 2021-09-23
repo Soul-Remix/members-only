@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('./partials/nav.ejs', {user:undefined}) %>
+        <main class="container-small">
+            <div class="form-container">
+                <h2 class="form-header">Members Only Signup !</h2>
+                <img src="/images/spy.svg" alt="" class="form-img">
+                <% if(errors.length>0) { %>
+                    <ul class="alert">
+                        <%errors.forEach(error=> {%>
+                            <li>
+                                <%= error.msg%>
+                            </li>
+                            <%}) %>
+                    </ul>
+                    <%}%>
+                        <form action="" method="POST">
+                            <label for="username"></label>
+                            <input type="text" name="username" id="username" required placeholder="Enter Username"
+                                value=<%=user.username ? user.username : '' %>>
+
+                            <label for="email"></label>
+                            <input type="email" name="email" id="email" required placeholder="Enter E-mail"
+                                value=<%=user.email ? user.email : '' %>>
+                            <label for="password"></label>
+                            <input type="password" name="password" id="password" required placeholder="Enter Password">
+                            <label for="password2"></label>
+                            <input type="password" name="password2" id="password2" required
+                                placeholder="Confirm Password">
+                            <button type="submit" class="btn form-btn">Sign Up</button>
+                        </form>
+            </div>
+        </main>
+</body>
+
+</html>
