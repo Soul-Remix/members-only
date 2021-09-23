@@ -19,6 +19,7 @@ nav {
   align-items: center;
   flex-wrap: wrap;
   padding: 0 15px;
+  margin-bottom: 35px;
 }
 
 .logo {
@@ -54,4 +55,105 @@ nav li {
   height: 1rem;
   color: blue;
   margin-right: 4px;
+}
+
+/* Main */
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Card */
+
+.card {
+  padding: 25px;
+  border: none;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+  background: #141414;
+  margin-bottom: 35px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover,
+.card:focus {
+  transform: scale(1.05);
+}
+
+.card-img {
+  width: 25%;
+  height: auto;
+  flex: 1;
+}
+
+.card-img:hover {
+  animation: jinggle 0.5s ease-in-out 0s 1 forwards;
+}
+
+@keyframes jinggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.card-content {
+  flex: 6;
+  width: 100%;
+}
+
+.card-body {
+  padding: 20px;
+  background: #1c1c1c;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+}
+
+.card-info {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+.card-info p {
+  display: flex;
+  justify-content: flex-end;
+  background: #1c1c1c;
+  border: none;
+  border-radius: 25px;
+  padding: 8px;
+  float: right;
+  clear: both;
+  margin: 0;
+}
+
+.card-svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  color: #ebebeb;
+  margin-right: 4px;
+}
+
+.card-date {
+  margin-bottom: 8px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    flex-flow: row nowrap;
+    gap: 50px;
+    margin-bottom: 50px;
+  }
 }

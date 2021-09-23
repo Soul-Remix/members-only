@@ -13,11 +13,11 @@
 
 <body>
   <%- include('./partials/nav.ejs', {user:user}) %>
-    <h1>
-      <%= title %>
-    </h1>
-    <p>Welcome to <%= title %>
-    </p>
+    <main class="container">
+      <% posts.forEach(post=> { %>
+        <%- include('./partials/post-card.ejs', {user:user,post:post}) %>
+          <%}) %>
+    </main>
 </body>
 
 </html>
