@@ -14,9 +14,12 @@
 <body>
   <%- include('./partials/nav.ejs', {user:user}) %>
     <main class="container">
-      <% posts.forEach(post=> { %>
-        <%- include('./partials/post-card.ejs', {user:user,post:post}) %>
-          <%}) %>
+      <% if(user) { %>
+        <a href="/create-post" class="btn create-btn">Share what's on your mind</a>
+        <%}%>
+          <% posts.forEach(post=> { %>
+            <%- include('./partials/post-card.ejs', {user:user,post:post}) %>
+              <%}) %>
     </main>
 </body>
 

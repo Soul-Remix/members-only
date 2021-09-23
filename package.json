@@ -8,6 +8,7 @@
     "server": "DEBUG=express-library:* npm run dev"
   },
   "dependencies": {
+    "connect-mongo": "^4.6.0",
     "cookie-parser": "~1.4.4",
     "debug": "^4.3.2",
     "dotenv": "^10.0.0",

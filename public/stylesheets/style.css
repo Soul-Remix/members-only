@@ -268,3 +268,12 @@ input {
 .vibrate:hover {
   animation-play-state: paused;
 }
+
+.create-btn {
+  margin: auto;
+  display: block;
+  width: 40%;
+  min-width: 200px;
+  text-align: center;
+  text-decoration: none;
+}
