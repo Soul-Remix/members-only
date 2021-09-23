@@ -2,6 +2,7 @@ const User = require('../models/user');
 const Post = require('../models/post');
 const { body, validationResult } = require('express-validator');
 const { genPassword } = require('../config/passwordUtils');
+const passport = require('passport');
 
 const avatarArr = [
   'images/alien.svg',
@@ -19,9 +20,11 @@ const index = async (req, res, next) => {
   res.render('index', {
     title: 'Home Page',
     user: req.user,
-    post,
+    posts,
   });
 };
+
+// Sign Up
 
 const signup_get = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -96,4 +99,34 @@ const signup_post = [
   },
 ];
 
-module.exports = { index, signup_get, signup_post };
+// Login
+
+const login_get = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/');
+  }
+  res.render('login', { title: 'Login', msg: undefined });
+};
+
+const login_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login-error',
+});
+
+// Login Error
+
+const loginError = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/');
+  }
+  res.render('login-error', { title: 'Credintial Error' });
+};
+
+module.exports = {
+  index,
+  signup_get,
+  signup_post,
+  login_get,
+  login_post,
+  loginError,
+};

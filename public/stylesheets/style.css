@@ -227,3 +227,44 @@ input {
 .alert {
   color: red;
 }
+
+/* Error Page */
+
+.error-img {
+  width: 25%;
+  height: auto;
+}
+
+.center {
+  margin-top: 35%;
+}
+
+@media screen and (min-width: 768px) {
+  .center {
+    margin-top: 25%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .center {
+    margin-top: 15%;
+  }
+}
+
+.vibrate {
+  animation: vibration 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes vibration {
+  0% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(30px);
+  }
+}
+
+.vibrate:hover {
+  animation-play-state: paused;
+}
