@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const dayjs = require('dayjs');
+const relativeTime = require('dayjs/plugin/relativeTime');
+dayjs.extend(relativeTime);
 
 const Schema = mongoose.Schema;
 
@@ -9,8 +12,8 @@ const postSchema = new Schema({
   date: { type: Date, default: Date.now },
 });
 
-postSchema.virtual('url').get(function () {
-  return '/post/' + this._id;
+postSchema.virtual('dateNow').get(function () {
+  return dayjs(this.date).fromNow();
 });
 
 module.exports = mongoose.model('Post', postSchema);
