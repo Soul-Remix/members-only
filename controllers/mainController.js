@@ -56,7 +56,6 @@ const signup_post = [
   async (req, res, next) => {
     try {
       const errors = validationResult(req);
-      console.log(errors.array());
       const { hash, salt } = genPassword(req.body.password);
       const email = req.body.email.toLowerCase();
       const [foundUserEmail, foundUserName] = await Promise.all([
@@ -129,6 +128,54 @@ const logout = (req, res, next) => {
   res.redirect('/');
 };
 
+// Create Post
+
+const createPost_get = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    res.redirect('/');
+  } else {
+    res.render('create-post', {
+      title: 'Create Post',
+      user: req.user,
+      post: {},
+      errors: [],
+    });
+  }
+};
+
+const createPost_post = [
+  body('title')
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .withMessage('Please enter a valid post title'),
+  body('body')
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .withMessage('Please enter a valid post body'),
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    const post = new Post({
+      title: req.body.title,
+      body: req.body.body,
+      user: req.user.id,
+      date: Date.now(),
+    });
+    if (!errors.isEmpty()) {
+      res.render('create-post', {
+        title: 'Create Post',
+        user: req.user,
+        post,
+        errors: errors.array(),
+      });
+    } else {
+      await post.save();
+      res.redirect('/');
+    }
+  },
+];
+
 module.exports = {
   index,
   signup_get,
@@ -137,4 +184,6 @@ module.exports = {
   login_post,
   loginError,
   logout,
+  createPost_get,
+  createPost_post,
 };

@@ -25,4 +25,10 @@ router.get('/login-error', controller.loginError);
 
 router.get('/log-out', controller.logout);
 
+// Create Post
+
+router.get('/create-post', controller.createPost_get);
+
+router.post('/create-post', controller.createPost_post);
+
 module.exports = router;

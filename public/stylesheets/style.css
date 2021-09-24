@@ -197,7 +197,8 @@ form {
   width: 90%;
 }
 
-input {
+input,
+textarea {
   border: none;
   border-radius: 25px;
   background-color: #1c1c1c;

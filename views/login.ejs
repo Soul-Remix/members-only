@@ -17,18 +17,13 @@
             <div class="form-container">
                 <h2 class="form-header">Members Only Login !</h2>
                 <img src="/images/spy.svg" alt="" class="form-img">
-                <% if(msg) { %>
-                    <p class="alert">
-                        <%=msg %>
-                    </p>
-                    <%}%>
-                        <form action="" method="POST">
-                            <label for="username"></label>
-                            <input type="text" name="username" id="username" required placeholder="Enter Username">
-                            <label for="password"></label>
-                            <input type="password" name="password" id="password" required placeholder="Enter Password">
-                            <button type="submit" class="btn form-btn">Log in</button>
-                        </form>
+                <form action="" method="POST">
+                    <label for="username"></label>
+                    <input type="text" name="username" id="username" required placeholder="Enter Username">
+                    <label for="password"></label>
+                    <input type="password" name="password" id="password" required placeholder="Enter Password">
+                    <button type="submit" class="btn form-btn">Log in</button>
+                </form>
             </div>
         </main>
 </body>
