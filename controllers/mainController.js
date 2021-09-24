@@ -16,7 +16,7 @@ const avatarArr = [
 ];
 
 const index = async (req, res, next) => {
-  const posts = await Post.find();
+  const posts = await Post.find().populate('user').sort({ date: -1 });
   res.render('index', {
     title: 'Home Page',
     user: req.user,
