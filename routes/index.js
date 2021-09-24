@@ -31,4 +31,10 @@ router.get('/create-post', controller.createPost_get);
 
 router.post('/create-post', controller.createPost_post);
 
+// User Profile
+
+router.get('/profile', controller.userProfile);
+
+router.get('/profile-error', controller.profileError);
+
 module.exports = router;

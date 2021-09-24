@@ -176,6 +176,29 @@ const createPost_post = [
   },
 ];
 
+// User Profile
+
+const userProfile = async (req, res, next) => {
+  let notAuthorized = false;
+  if (!req.isAuthenticated()) {
+    res.redirect('/profile-error');
+  } else {
+    const posts = await Post.find({ user: req.user.id })
+      .populate('user')
+      .sort({ date: -1 });
+    res.render('user-profile', {
+      title: req.user.username,
+      posts,
+      notAuthorized,
+      user: req.user,
+    });
+  }
+};
+
+const profileError = (req, res, next) => {
+  res.render('profile-error', { title: 'Error' });
+};
+
 module.exports = {
   index,
   signup_get,
@@ -186,4 +209,6 @@ module.exports = {
   logout,
   createPost_get,
   createPost_post,
+  userProfile,
+  profileError,
 };
