@@ -122,6 +122,13 @@ const loginError = (req, res, next) => {
   res.render('login-error', { title: 'Credintial Error' });
 };
 
+// Logout
+
+const logout = (req, res, next) => {
+  req.logout();
+  res.redirect('/');
+};
+
 module.exports = {
   index,
   signup_get,
@@ -129,4 +136,5 @@ module.exports = {
   login_get,
   login_post,
   loginError,
+  logout,
 };

@@ -21,4 +21,8 @@ router.post('/login', controller.login_post);
 
 router.get('/login-error', controller.loginError);
 
+// Logout
+
+router.get('/log-out', controller.logout);
+
 module.exports = router;
