@@ -36,6 +36,9 @@
                             Unknown
                         </p>
                         <%} %>
+                            <% if(user.isAdmin || post.user===user._id) {%>
+                                <a href="/delete/<%=post._id %>" class="delete-link">Delete</a>
+                                <%} %>
 
         </div>
     </div>

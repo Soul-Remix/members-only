@@ -279,3 +279,22 @@ textarea {
   text-decoration: none;
   margin-bottom: 30px;
 }
+
+/* Delete link */
+
+.delete-link {
+  display: block;
+  float: left;
+  clear: both;
+  text-decoration: none;
+  background: red;
+  color: white;
+  padding: 10px 15px;
+  border: 1px solid red;
+  border-radius: 25px;
+}
+
+.delete-link:hover {
+  background: white;
+  color: red;
+}
