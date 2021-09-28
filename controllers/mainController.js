@@ -176,12 +176,27 @@ const createPost_post = [
   },
 ];
 
+// Delete Post
+
+const deletePost = async (req, res, next) => {
+  const id = req.params.id;
+  const postExist = await Post.findById(id);
+  if (!req.isAuthenticated() && !req.user.isAdmin) {
+    res.redirect('/error');
+  }
+  if (!postExist) {
+    res.redirect('/');
+  }
+  await Post.findByIdAndDelete(id);
+  res.redirect('/');
+};
+
 // User Profile
 
 const userProfile = async (req, res, next) => {
   let notAuthorized = false;
   if (!req.isAuthenticated()) {
-    res.redirect('/profile-error');
+    res.redirect('/error');
   } else {
     const posts = await Post.find({ user: req.user.id })
       .populate('user')
@@ -195,7 +210,7 @@ const userProfile = async (req, res, next) => {
   }
 };
 
-const profileError = (req, res, next) => {
+const error = (req, res, next) => {
   res.render('profile-error', { title: 'Error' });
 };
 
@@ -210,5 +225,6 @@ module.exports = {
   createPost_get,
   createPost_post,
   userProfile,
-  profileError,
+  error,
+  deletePost,
 };

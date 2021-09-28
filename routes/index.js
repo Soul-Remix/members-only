@@ -31,10 +31,14 @@ router.get('/create-post', controller.createPost_get);
 
 router.post('/create-post', controller.createPost_post);
 
+// Delete Post
+
+router.get('/delete/:id', controller.deletePost);
+
 // User Profile
 
 router.get('/profile', controller.userProfile);
 
-router.get('/profile-error', controller.profileError);
+router.get('/error', controller.error);
 
 module.exports = router;
