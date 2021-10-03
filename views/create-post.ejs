@@ -1,42 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('./partials/head') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <title>
-        <%= title %>
-    </title>
-</head>
+    <body>
+        <%- include('./partials/nav.ejs', {user:user}) %>
+            <main class="container-small">
+                <div class="form-container">
+                    <h2 class="form-header">Create Post</h2>
+                    <img src=<%=user.avatar %> alt="" class="form-img">
+                    <% if(errors.length>0) { %>
+                        <ul class="alert">
+                            <%errors.forEach(error=> {%>
+                                <li>
+                                    <%= error.msg%>
+                                </li>
+                                <%}) %>
+                        </ul>
+                        <%}%>
+                            <form action="" method="POST">
+                                <label for="title"></label>
+                                <input type="text" name="title" id="title" required placeholder="Enter post title"
+                                    value=<%=post.title ? post.title : '' %>>
+                                <label for="body"></label>
+                                <textarea name="body" id="body" required
+                                    placeholder="Enter post body"><%=post.body ? post.body : '' %></textarea>
+                                <button type="submit" class="btn form-btn">Post</button>
+                            </form>
+                </div>
+            </main>
+    </body>
 
-<body>
-    <%- include('./partials/nav.ejs', {user:user}) %>
-        <main class="container-small">
-            <div class="form-container">
-                <h2 class="form-header">Create Post</h2>
-                <img src=<%=user.avatar %> alt="" class="form-img">
-                <% if(errors.length>0) { %>
-                    <ul class="alert">
-                        <%errors.forEach(error=> {%>
-                            <li>
-                                <%= error.msg%>
-                            </li>
-                            <%}) %>
-                    </ul>
-                    <%}%>
-                        <form action="" method="POST">
-                            <label for="title"></label>
-                            <input type="text" name="title" id="title" required placeholder="Enter post title"
-                                value=<%=post.title ? post.title : '' %>>
-                            <label for="body"></label>
-                            <textarea name="body" id="body" required
-                                placeholder="Enter post body"><%=post.body ? post.body : '' %></textarea>
-                            <button type="submit" class="btn form-btn">Post</button>
-                        </form>
-            </div>
-        </main>
-</body>
-
-</html>
+    </html>

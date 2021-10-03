@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('./partials/head') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <title>
-        <%= title %>
-    </title>
-</head>
+    <body>
+        <%- include('./partials/nav.ejs', {user:user}) %>
+            <main class="container">
+                <% if(user) { %>
+                    <h2>
+                        <%=user.username %> Profile
+                    </h2>
+                    <%}%>
+                        <% posts.forEach(post=> { %>
+                            <%- include('./partials/post-card.ejs', {user:user,post:post}) %>
+                                <%}) %>
+            </main>
+    </body>
 
-<body>
-    <%- include('./partials/nav.ejs', {user:user}) %>
-        <main class="container">
-            <% if(user) { %>
-                <h2>
-                    <%=user.username %> Profile
-                </h2>
-                <%}%>
-                    <% posts.forEach(post=> { %>
-                        <%- include('./partials/post-card.ejs', {user:user,post:post}) %>
-                            <%}) %>
-        </main>
-</body>
-
-</html>
+    </html>
