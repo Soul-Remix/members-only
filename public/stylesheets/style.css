@@ -298,3 +298,11 @@ textarea {
   background: white;
   color: red;
 }
+
+.center-text {
+  text-align: center;
+}
+
+.mt {
+  margin-top: 10rem;
+}

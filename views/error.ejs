@@ -1,3 +1,19 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<%- include('./partials/head', {title: '404' }) %>
+
+    <body>
+        <%- include('./partials/nav.ejs', {user:undefined}) %>
+            <main class=".container-small center-text mt">
+                <h1>404</h1>
+                <h1>
+                    <%= message %>
+                </h1>
+
+                <h2>
+                    <%= error.status %>
+                </h2>
+                <pre><%= error.stack %></pre>
+            </main>
+
+    </body>
+
+    </html>
