@@ -118,7 +118,7 @@ const loginError = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.redirect('/');
   }
-  res.render('login-error', { title: 'Credintial Error' });
+  res.render('login-error', { title: 'Credentials Error' });
 };
 
 // Logout
@@ -183,18 +183,17 @@ const deletePost = async (req, res, next) => {
   const postExist = await Post.findById(id);
   if (!req.isAuthenticated() && !req.user.isAdmin) {
     res.redirect('/error');
-  }
-  if (!postExist) {
+  } else if (!postExist) {
+    res.redirect('/');
+  } else {
+    await Post.findByIdAndDelete(id);
     res.redirect('/');
   }
-  await Post.findByIdAndDelete(id);
-  res.redirect('/');
 };
 
 // User Profile
 
 const userProfile = async (req, res, next) => {
-  let notAuthorized = false;
   if (!req.isAuthenticated()) {
     res.redirect('/error');
   } else {
@@ -204,7 +203,6 @@ const userProfile = async (req, res, next) => {
     res.render('user-profile', {
       title: req.user.username,
       posts,
-      notAuthorized,
       user: req.user,
     });
   }
